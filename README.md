@@ -1,7 +1,7 @@
 1. Clone a repository
    **https://github.com/skannabiran/user-service.git**
 2. Navigate to the project repository in your local machine
-   **../../user-service**
+   **cd ../user-service**
 3. Execute maven build command
    **mvn clean install**
 4. Execute docker image build
