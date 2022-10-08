@@ -15,11 +15,6 @@ import java.util.Date;
 @Table(name = "User_Info")
 public class User {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
     @Column
     private String id;
     @Column

@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Data
-public class CreateUserRequest {
+public class UserRequest {
 
     @NotBlank(message = ServiceConstants.FIRST_NAME_MANDATORY)
     private String firstName;

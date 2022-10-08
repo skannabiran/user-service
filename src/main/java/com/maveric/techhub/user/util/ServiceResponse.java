@@ -9,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class ServiceResponse {
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object response;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)

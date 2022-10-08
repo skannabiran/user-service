@@ -1,8 +1,5 @@
 package com.maveric.techhub.user.controller;
-import java.util.List;
-import com.maveric.techhub.user.entity.User;
-import com.maveric.techhub.user.model.CreateUserRequest;
-import com.maveric.techhub.user.model.UpdateUserRequest;
+import com.maveric.techhub.user.model.UserRequest;
 import com.maveric.techhub.user.model.UserResponse;
 import com.maveric.techhub.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -32,27 +29,33 @@ class UserController {
     private final UserService userService;
 
     @PostMapping
-    ResponseEntity<UserResponse> createUser(@Valid @RequestBody CreateUserRequest userRequest) {
+    ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest userRequest) {
         return userService.createUser(userRequest);
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<UserResponse> getUser(@PathVariable String id) {
+    ResponseEntity<UserResponse> getUser(@PathVariable(name = "id") String id) {
         return userService.getUser(id);
     }
 
+    @GetMapping("/getUserByEmail/{emailId}")
+    ResponseEntity<UserResponse> getUserByEmailId(@PathVariable(name = "emailId") String emailId) {
+        return userService.getUserByEmailId(emailId);
+    }
+
     @PutMapping("/{id}")
-    ResponseEntity<UserResponse> updateUser(@Valid @RequestBody UpdateUserRequest userRequest) {
-        return userService.updateUser(userRequest);
+    ResponseEntity<UserResponse> updateUser(@PathVariable(name = "id") String id,
+                                            @RequestBody UserRequest userRequest) {
+        return userService.updateUser(id, userRequest);
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<UserResponse> deleteUser(@PathVariable String id) {
+    ResponseEntity<UserResponse> deleteUser(@PathVariable(name = "id") String id) {
         return userService.deleteUser(id);
     }
 
     @GetMapping
-    List<User> getUsers() {
+    ResponseEntity<UserResponse> getUsers() {
         return userService.getUsers();
     }
 
